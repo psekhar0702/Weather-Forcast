@@ -1,0 +1,221 @@
+:root {
+  
+  --radius: 16px;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --primary: #3b82f6;
+  --secondary: #9333ea;
+  --text-light: #f9fafb;
+  --text-muted: #9ca3af;
+  --bg-gradient-start: #0f172a;
+  --bg-gradient-end: #1e293b;
+}
+
+[data-bs-theme="light"] {
+  --card-bg: rgba(0, 0, 0, 0.05);
+  --card-border: rgba(0, 0, 0, 0.1);
+  --primary: #2563eb;
+  --secondary: #6d28d9;
+  --text-light: #1f2937;
+  --text-muted: #6b7280;
+  --bg-gradient-start: #e2e8f0;
+  --bg-gradient-end: #f8fafc;
+}
+
+* {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  color: var(--text-light);
+  margin: 0;
+  padding: 0;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.card {
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(12px);
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.5s ease, border 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card-forecast {
+  text-align: center;
+  padding: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.card-forecast:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+h2, h3, h4 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+#currentWeather {
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+button {
+  border-radius: var(--radius);
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+
+.btn-primary {
+  border: 1px solid var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+}
+
+.btn-outline-primary {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-outline-success {
+  border: 1px solid #10b981;
+  color: #10b981;
+  background-color: transparent;
+}
+
+.btn-outline-success:hover {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn-outline-light {
+  border: 1px solid var(--text-light);
+  color: var(--text-light);
+  background-color: transparent;
+}
+
+.btn-outline-light:hover {
+  background-color: var(--text-light);
+  color: var(--bg-gradient-start);
+}
+
+input[type="text"] {
+  border-radius: var(--radius);
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-light);
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 6px var(--primary);
+}
+
+#forecast {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 992px) { 
+  #currentWeather {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card {
+    padding: 0.8rem;
+  }
+
+  h5.card-title {
+    font-size: 1.1rem;
+  }
+
+  #cwIcon {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (max-width: 768px) { 
+  nav .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  #searchForm {
+    flex-direction: column;
+  }
+
+  #searchForm input,
+  #searchForm button {
+    width: 100%;
+  }
+
+  .row.g-3.align-items-end > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  #currentWeather {
+    text-align: left;
+  }
+
+  #forecastGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 576px) { 
+  body {
+    font-size: 14px;
+  }
+
+  h5.card-title {
+    font-size: 1rem;
+  }
+
+  #cwIcon {
+    font-size: 2rem !important;
+  }
+
+  .btn, input[type="text"] {
+    padding: 0.5rem 0.8rem;
+    font-size: 14px;
+  }
+
+  #forecastGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
